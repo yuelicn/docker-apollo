@@ -83,7 +83,7 @@ services:
       - spring_datasource_password=Tusdao@mysql2019*
 ```
 其它和adminservice的相同，特别注意以下事项
-- 1、volumes 将apollo-env.properties文件挂载到容器外部，特别注意实现创建好物理机的目录、将修改好的apollo-env.properties文件当道对应的目录中，在启动执行启动。
+- 1、volumes 将apollo-env.properties文件挂载到容器外部，特别注意先创建好物理机的目录、将修改好的apollo-env.properties文件放到对应的目录中，在启动执行启动。（不要出现挂在一个不存在文件地址）
 
 如果不想分开启动，也可以执行apollo-compose.yml，不过里面改修改的还是和单个修改的地方相同。
 
