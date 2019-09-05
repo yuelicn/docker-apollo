@@ -7,11 +7,11 @@
 FROM java:8-jre
 MAINTAINER Louis
 
-ENV VERSION 0.7.0
+ENV VERSION 1.5.0
 
 RUN apt-get install unzip
 
-ADD target/apollo-configservice-${VERSION}-github.zip /apollo-configservice/apollo-configservice-${VERSION}-github.zip
+ADD apollo-configservice-${VERSION}-github.zip /apollo-configservice/apollo-configservice-${VERSION}-github.zip
 
 RUN unzip /apollo-configservice/apollo-configservice-${VERSION}-github.zip -d /apollo-configservice \
     && rm -rf /apollo-configservice/apollo-configservice-${VERSION}-github.zip \

@@ -7,17 +7,17 @@
 FROM java:8-jre
 MAINTAINER Louis
 
-ENV VERSION 0.7.0
+ENV VERSION 1.5.0
 
 RUN apt-get install unzip
 
-ADD target/apollo-portal-${VERSION}-github.zip /apollo-portal/apollo-portal-${VERSION}-github.zip
+ADD apollo-portal-${VERSION}-github.zip /apollo-portal/apollo-portal-${VERSION}-github.zip
 
 RUN unzip /apollo-portal/apollo-portal-${VERSION}-github.zip -d /apollo-portal \
     && rm -rf /apollo-portal/apollo-portal-${VERSION}-github.zip \
     && sed -i '$d' /apollo-portal/scripts/startup.sh \
     && echo "tail -f /dev/null" >> /apollo-portal/scripts/startup.sh
 
-EXPOSE 8080
+EXPOSE 8070
 
 CMD ["/apollo-portal/scripts/startup.sh"]

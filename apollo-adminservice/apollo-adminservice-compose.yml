@@ -1,0 +1,15 @@
+version: "3"
+services:
+  apollo-adminservice:
+    container_name: apollo-adminservice
+    build: apollo-adminservice/
+    image: apollo-adminservice
+    ports:
+      - 8090:8090
+    volumes:
+      - "/docker/apollo/logs/100003172:/opt/logs/100003172"
+    environment:
+      - spring_datasource_url=jdbc:mysql://xxx:8306/ApolloConfigDB_TEST?characterEncoding=utf8
+      - spring_datasource_username=root
+      - spring_datasource_password=xxx@mysql2019*
+    restart: always

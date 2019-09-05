@@ -1,0 +1,49 @@
+version: "3"
+services:
+  apollo-configservice:
+    container_name: apollo-configservice
+    build: apollo-configservice/
+    image: apollo-configservice
+    ports:
+      - 8080:8080
+    volumes:
+      - "/docker/apollo/logs/100003171:/opt/logs/100003171"
+    environment:
+      - spring_datasource_url=jdbc:mysql://47.xx.xx.209:8306/ApolloConfigDB_TEST?characterEncoding=utf8
+      - spring_datasource_username=root
+      - spring_datasource_password=Tusdao@xx*
+    restart: always
+
+  apollo-adminservice:
+    container_name: apollo-adminservice
+    build: apollo-adminservice/
+    image: apollo-adminservice
+    ports:
+      - 8090:8090
+    volumes:
+      - "/docker/apollo/logs/100003172:/opt/logs/100003172"
+    environment:
+      - spring_datasource_url=jdbc:mysql://47.xx.xx.209:8306/ApolloConfigDB_TEST?characterEncoding=utf8
+      - spring_datasource_username=root
+      - spring_datasource_password=Tusdao@xx*
+    depends_on:
+      - apollo-configservice
+
+    restart: always
+
+  apollo-portal:
+    container_name: apollo-portal
+    build: apollo-portal/
+    image: apollo-portal
+    ports:
+      - 8070:8070
+    volumes:
+      - "/docker/apollo/logs/100003173:/opt/logs/100003173"
+      - "/Apollo/docker-image/apollo-portal/config/apollo-env.properties:/apollo-portal/config/apollo-env.properties"
+    environment:
+      - spring_datasource_url=jdbc:mysql://47.xx.xx.209:8306/ApolloPortalDB?characterEncoding=utf8
+      - spring_datasource_username=root
+      - spring_datasource_password=Tusdao@xx*
+    depends_on:
+      - apollo-adminservice
+    restart: always

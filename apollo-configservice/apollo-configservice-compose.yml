@@ -1,0 +1,16 @@
+version: "3"
+services:
+  apollo-configservice:
+    container_name: apollo-configservice
+    build: apollo-configservice/
+    image: apollo-configservice
+    ports:
+      - 8080:8080
+    volumes:
+      - "/docker/apollo/logs/100003171:/opt/logs/100003171"
+    environment:
+      - spring_datasource_url=jdbc:mysql://47.94.211.209:8306/ApolloConfigDB_TEST?characterEncoding=utf8
+      - spring_datasource_username=root
+      - spring_datasource_password=Tusdao@mysql2019*
+
+    restart: always

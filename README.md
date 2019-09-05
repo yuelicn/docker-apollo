@@ -36,3 +36,62 @@
 
 4. 访问 http://IP:PORT 查看部署是否成功。
 
+#Docker-compose Ctrip Apollo.
+使用Docker-compose方式将一些配置信息提到外面，这样就不用我们每次都修改源码打包了， 方便了部署。
+
+1、启动时修改compose文件,以adminservice为例
+```
+version: "3"
+services:
+  apollo-adminservice:
+    container_name: apollo-adminservice
+    build: apollo-adminservice/
+    image: apollo-adminservice
+    ports:
+      - 8090:8090
+    volumes:
+      - "/Users/xxx/apollo/logs/100003172:/opt/logs/100003172"
+    environment:
+      - spring_datasource_url=jdbc:mysql://xxx:8306/ApolloConfigDB_TEST?characterEncoding=utf8
+      - spring_datasource_username=root
+      - spring_datasource_password=xxx@mysql2019*
+```
+- 1、build 参数为dockerfile路径
+- 2、volumes : 为日志文件挂载到本地目录， 格式 本地目录：容器内目录
+- 3、environment 配置数据库的连接信息
+
+configservice的compose文件修改和adminservice基本相同。下面我们单独说下portal的
+
+2、portal 的compose 文件修改注意项
+```
+version: "3"
+services:
+  apollo-portal:
+    container_name: apollo-portal
+    build: apollo-portal/
+    image: apollo-portal
+    ports:
+      - 8070:8070
+    volumes:
+      - "/Users/yueli/apollo/logs/100003173:/opt/logs/100003173"
+      - "/Users/yueli/work/document/tusdao/Apollo/docker-image/apollo-portal/config/apollo-env.properties:/apollo-portal/config/apollo-env.properties"
+    environment:
+      - spring_datasource_url=jdbc:mysql://47.94.211.209:8306/ApolloPortalDB?characterEncoding=utf8
+      - spring_datasource_username=root
+      - spring_datasource_password=Tusdao@mysql2019*
+```
+其它和adminservice的相同，特别注意以下事项
+- 1、volumes 将apollo-env.properties文件挂载到容器外部，特别注意实现创建好物理机的目录、将修改好的apollo-env.properties文件当道对应的目录中，在启动执行启动。
+
+如果不想分开启动，也可以执行apollo-compose.yml，不过里面改修改的还是和单个修改的地方相同。
+
+3、启动命令
+1、首次启动需要build镜像
+```
+docker-compose -f apollo-compose.yml up --build -d
+```
+
+在启动只需要
+```
+docker-compose -f apollo-compose.yml up -d
+```
