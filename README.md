@@ -52,7 +52,7 @@ services:
     ports:
       - 8090:8090
     volumes:
-      - "/Users/xxx/apollo/logs/100003172:/opt/logs/100003172"
+      - "/docker/apollo/logs/100003172:/opt/logs/100003172"
     environment:
       - spring_datasource_url=jdbc:mysql://xxx:8306/ApolloConfigDB_TEST?characterEncoding=utf8
       - spring_datasource_username=root
@@ -75,8 +75,8 @@ services:
     ports:
       - 8070:8070
     volumes:
-      - "/Users/yueli/apollo/logs/100003173:/opt/logs/100003173"
-      - "/Users/yueli/work/document/tusdao/Apollo/docker-image/apollo-portal/config/apollo-env.properties:/apollo-portal/config/apollo-env.properties"
+      - "/docker/apollo/logs/100003173:/opt/logs/100003173"
+      - "Apollo/docker-image/apollo-portal/config/apollo-env.properties:/apollo-portal/config/apollo-env.properties"
     environment:
       - spring_datasource_url=jdbc:mysql://47.94.211.209:8306/ApolloPortalDB?characterEncoding=utf8
       - spring_datasource_username=root
