@@ -36,7 +36,9 @@
 
 4. 访问 http://IP:PORT 查看部署是否成功。
 
-#Docker-compose Ctrip Apollo.
+==================================================
+
+# Docker-compose Ctrip Apollo.
 使用Docker-compose方式将一些配置信息提到外面，这样就不用我们每次都修改源码打包了， 方便了部署。
 
 1、启动时修改compose文件,以adminservice为例
