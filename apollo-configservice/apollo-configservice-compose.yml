@@ -12,5 +12,6 @@ services:
       - spring_datasource_url=jdbc:mysql://47.94.211.209:8306/ApolloConfigDB_TEST?characterEncoding=utf8
       - spring_datasource_username=root
       - spring_datasource_password=Tusdao@mysql2019*
+      - eureka.instance.ip-address=172.11.11.11
 
     restart: always
