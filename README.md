@@ -97,3 +97,21 @@ docker-compose -f apollo-compose.yml up --build -d
 ```
 docker-compose -f apollo-compose.yml up -d
 ```
+
+20190911
+-------------------------------------------
+在使用docker搭建apollo集群时，发现adminservice、configservice、的注册地址为docker容器内部
+地址，导致使用时网络不通的问题。
+
+故，将添加了 eureka.instance.ip-address 环境变量的配置，
+我们在打包时（adminservice,configservice）时需要在bootstrap.yml中添加
+```
+eureka:
+  instance:
+    ip-address: ${eureka.instance.ip-address}
+```
+
+在apollo-compose.yml（adminservice,configservice）的环境变量中添加
+```
+eureka.instance.ip-address=内网地址
+```
