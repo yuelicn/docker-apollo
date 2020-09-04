@@ -10,9 +10,9 @@ services:
       - "/docker/apollo/logs/100003173:/opt/logs/100003173"
       - "/apollo-portal/config/apollo-env.properties:/apollo-portal/config/apollo-env.properties"
     environment:
-      - spring_datasource_url=jdbc:mysql://47.94.211.209:8306/ApolloPortalDB?characterEncoding=utf8
-      - spring_datasource_username=root
-      - spring_datasource_password=Tusdao@mysql2019*
+      - spring_datasource_url=jdbc:mysql://xx.xx.xxx.xx:8306/ApolloPortalDB?characterEncoding=utf8
+      - spring_datasource_username=xxx
+      - spring_datasource_password=xxxxxx
 
 
     restart: always
