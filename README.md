@@ -55,7 +55,7 @@ services:
       - "/docker/apollo/logs/100003172:/opt/logs/100003172"
     environment:
       - spring_datasource_url=jdbc:mysql://xxx:8306/ApolloConfigDB_TEST?characterEncoding=utf8
-      - spring_datasource_username=root
+      - spring_datasource_username=xxx
       - spring_datasource_password=xxx@mysql2019*
 ```
 - 1、build 参数为dockerfile路径
@@ -78,9 +78,9 @@ services:
       - "/docker/apollo/logs/100003173:/opt/logs/100003173"
       - "Apollo/docker-image/apollo-portal/config/apollo-env.properties:/apollo-portal/config/apollo-env.properties"
     environment:
-      - spring_datasource_url=jdbc:mysql://47.94.211.209:8306/ApolloPortalDB?characterEncoding=utf8
+      - spring_datasource_url=jdbc:mysql://47.94.xx.xx:8306/ApolloPortalDB?characterEncoding=utf8
       - spring_datasource_username=root
-      - spring_datasource_password=Tusdao@mysql2019*
+      - spring_datasource_password=xxx@mysql2019xxx
 ```
 其它和adminservice的相同，特别注意以下事项
 - 1、volumes 将apollo-env.properties文件挂载到容器外部，特别注意先创建好物理机的目录、将修改好的apollo-env.properties文件放到对应的目录中，在启动执行启动。（不要出现挂在一个不存在文件地址）
