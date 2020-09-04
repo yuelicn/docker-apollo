@@ -56,7 +56,7 @@ services:
     environment:
       - spring_datasource_url=jdbc:mysql://xxx:8306/ApolloConfigDB_TEST?characterEncoding=utf8
       - spring_datasource_username=xxx
-      - spring_datasource_password=xxx@mysql2019*
+      - spring_datasource_password=xxx@mysqlxxx
 ```
 - 1、build 参数为dockerfile路径
 - 2、volumes : 为日志文件挂载到本地目录， 格式 本地目录：容器内目录
@@ -78,7 +78,7 @@ services:
       - "/docker/apollo/logs/100003173:/opt/logs/100003173"
       - "Apollo/docker-image/apollo-portal/config/apollo-env.properties:/apollo-portal/config/apollo-env.properties"
     environment:
-      - spring_datasource_url=jdbc:mysql://47.94.xx.xx:8306/ApolloPortalDB?characterEncoding=utf8
+      - spring_datasource_url=jdbc:mysql://xx.xx.xx.xx:8306/ApolloPortalDB?characterEncoding=utf8
       - spring_datasource_username=root
       - spring_datasource_password=xxx@mysql2019xxx
 ```
